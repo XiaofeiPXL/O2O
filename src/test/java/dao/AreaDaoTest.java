@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Area;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,5 +26,6 @@ public class AreaDaoTest extends baseTest{
         for (Area area:areaList) {
             System.out.println(area);
         }
+        Assert.assertEquals(3,areaList.size());
     }
 }

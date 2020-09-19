@@ -1,6 +1,6 @@
-package dao;
+package com.imooc.o2o.dao;
 
-import entity.Area;
+import com.imooc.o2o.entity.Area;
 
 import java.util.List;
 

@@ -1,26 +1,30 @@
-package entity;
+package com.imooc.o2o.entity;
 
 import java.util.Date;
 
-//顾客店铺积分映射
-public class UserShopMap {
+//顾客消费的商品映射
+public class UserProductMap {
 	// 主键Id
-	private Long userShopId;
+	private Long userProductId;
 	// 创建时间
 	private Date createTime;
-	// 顾客在该店铺的积分
+	// 消费商品所获得的积分
 	private Integer point;
 	// 顾客信息实体类
 	private PersonInfo user;
+	// 商品信息实体类
+	private Product product;
 	// 店铺信息实体类
 	private Shop shop;
+	// 操作员信息实体类
+	private PersonInfo operator;
 
-	public Long getUserShopId() {
-		return userShopId;
+	public Long getUserProductId() {
+		return userProductId;
 	}
 
-	public void setUserShopId(Long userShopId) {
-		this.userShopId = userShopId;
+	public void setUserProductId(Long userProductId) {
+		this.userProductId = userProductId;
 	}
 
 	public Date getCreateTime() {
@@ -47,12 +51,28 @@ public class UserShopMap {
 		this.user = user;
 	}
 
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	public Shop getShop() {
 		return shop;
 	}
 
 	public void setShop(Shop shop) {
 		this.shop = shop;
+	}
+
+	public PersonInfo getOperator() {
+		return operator;
+	}
+
+	public void setOperator(PersonInfo operator) {
+		this.operator = operator;
 	}
 
 }

@@ -103,6 +103,22 @@ public class ImageUtils {
         return nowTimeStr + randomNumber;
     }
 
+    /**
+     * storeOrPath是文件路径,则删除该文件,如果是目录路径,则删除路径下全部文件
+     * @param storePath 文件相对路径
+     */
+    public static void deleteFileOrPath(String storePath){
+        File fileOrPath = new File(PathUtil.getImgBasePath()+storePath);
+        if(fileOrPath.exists()){
+            if(fileOrPath.isDirectory()){
+                File files[] = fileOrPath.listFiles();
+                for(int i=0;i< files.length;i++){
+                    files[i].delete();
+                }
+            }
+            fileOrPath.delete();
+        }
+    }
 
     public static void main(String[] args) {
         try {

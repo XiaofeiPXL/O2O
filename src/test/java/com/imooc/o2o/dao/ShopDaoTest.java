@@ -67,4 +67,10 @@ public class ShopDaoTest extends BaseTest {
         shop.setLastEditTime(new Date());
         shopDao.updateShop(shop);
     }
+
+    @Test
+    public void queryByShopId() {
+        Shop shop = shopDao.queryByShopId(49);
+        System.out.println(shop);
+    }
 }

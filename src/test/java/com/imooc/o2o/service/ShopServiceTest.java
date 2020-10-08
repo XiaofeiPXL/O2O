@@ -54,4 +54,20 @@ public class ShopServiceTest extends BaseTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void modifyShop() {
+        Shop shop = new Shop();
+        shop.setShopId(48L);
+        shop.setShopAddr("Famous coffee brand");
+        shop.setLastEditTime(new Date());
+        File file = new File("/Users/xiaofeiwang/Desktop/iceCream-coffee.jpg");
+        InputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        shopService.modifyShop(shop,inputStream,file.getName());
+    }
 }

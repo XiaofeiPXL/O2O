@@ -13,6 +13,11 @@ $(function () {
     // 编辑店铺信息的URL
     let editShopUrl = '/o2o/shopadmin/modifyshop';
     // 判断是编辑操作还是注册操作
+    if(!isEdit){
+        getShopInitInfo();
+    }else{
+        getShopInfo(shopId);
+    }
     getShopInitInfo();
     // 通过店铺Id获取店铺信息
     function getShopInfo(shopId) {
@@ -69,6 +74,10 @@ $(function () {
     $('#submit').click(function () {
         // 创建shop对象
         let shop = {};
+        if (isEdit) {
+            // 若属于编辑，则给shopId赋值
+            shop.shopId = shopId;
+        }
         // 获取表单里的数据并填充进对应的店铺属性中
         shop.shopName = $('#shop-name').val();
         shop.shopAddr = $('#shop-addr').val();
@@ -103,7 +112,7 @@ $(function () {
         formData.append('verifyCodeActual', verifyCodeActual);
         // 将数据提交至后台处理相关操作
         $.ajax({
-            url: registerShopUrl,
+            url: isEdit? editShopUrl:registerShopUrl,
             type: 'POST',
             data: formData,
             contentType: false,

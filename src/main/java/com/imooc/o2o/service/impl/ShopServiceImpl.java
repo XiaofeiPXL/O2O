@@ -7,6 +7,7 @@ import com.imooc.o2o.enums.ShopStateEnum;
 import com.imooc.o2o.exceptions.ShopOperationException;
 import com.imooc.o2o.service.ShopService;
 import com.imooc.o2o.util.ImageUtils;
+import com.imooc.o2o.util.PageCalculator;
 import com.imooc.o2o.util.PathUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @program: o2o
@@ -24,8 +26,26 @@ import java.util.Date;
 
 @Service("shopService")
 public class ShopServiceImpl implements ShopService {
-    @Autowired
     private ShopDao shopDao;
+
+    @Autowired
+    public void setShopDao(ShopDao shopDao){
+        this.shopDao = shopDao;
+    }
+    @Override
+    public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize) {
+        int rowIndex = PageCalculator.calculateRowIndex(pageIndex,pageSize);
+        List<Shop> shopList = shopDao.queryShopList(shopCondition,rowIndex,pageSize);
+        int count = shopDao.queryShopCount(shopCondition);
+        ShopExecution shopExecution = new ShopExecution();
+        if(shopList!=null){
+            shopExecution.setShopList(shopList);
+            shopExecution.setCount(count);
+        }else{
+            shopExecution.setState(ShopStateEnum.INNER_ERROR.getState());
+        }
+        return shopExecution;
+    }
 
     @Override
     @Transactional

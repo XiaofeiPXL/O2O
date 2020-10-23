@@ -1,6 +1,7 @@
 package com.imooc.o2o.service;
 
 import com.imooc.o2o.BaseTest;
+import com.imooc.o2o.dto.ShopExecution;
 import com.imooc.o2o.entity.Area;
 import com.imooc.o2o.entity.PersonInfo;
 import com.imooc.o2o.entity.Shop;
@@ -69,5 +70,16 @@ public class ShopServiceTest extends BaseTest {
             e.printStackTrace();
         }
         shopService.modifyShop(shop,inputStream,file.getName());
+    }
+
+    @Test
+    public void getShopList() {
+        ShopCategory shopCategory = new ShopCategory();
+        Shop shop = new Shop();
+        shopCategory.setShopCategoryId(36L);
+        shop.setShopCategory(shopCategory);
+        ShopExecution shopExecution = shopService.getShopList(shop,1,2);
+        System.out.println("店铺列表数"+" "+shopExecution.getShopList().size());
+        System.out.println("店铺总数"+" "+shopExecution.getCount());
     }
 }

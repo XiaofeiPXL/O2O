@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>SUI Mobile Demo</title>
+	<%@ include file="../common/head.jsp"%>
 	<meta name="description"
 		  content="MSUI: Build mobile apps with simple HTML, CSS, and JS components.">
 	<meta name="author" content="阿里巴巴国际UED前端">
@@ -118,7 +119,7 @@
 								<input type="text" id="j_captcha" placeholder="验证码">
 								<div class="item-input">
 									<img id="captcha_img" alt="点击更换" title="点击更换"
-										 onclick="changeVerifyCode(this)" src="../kaptcha" />
+										 onclick="changeVerifyCode(this)" src="kaptcha" />
 								</div>
 							</div>
 						</div>
@@ -128,7 +129,7 @@
 			<div class="content-block">
 				<div class="row">
 					<div class="col-50">
-						<a href="/o2o/shopadmin/shopmanagement" class="button button-big button-fill button-danger">返回</a>
+						<a href="shopadmin/shopmanagement" class="button button-big button-fill button-danger">返回</a>
 					</div>
 					<div class="col-50">
 						<a href="#" class="button button-big button-fill button-success"

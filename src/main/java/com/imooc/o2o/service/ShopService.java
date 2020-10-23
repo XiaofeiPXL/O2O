@@ -15,6 +15,15 @@ import java.io.InputStream;
 
 
 public interface ShopService {
+
+    /**
+     * 根据shopCondition分页返回相应店铺列表
+     * @param shopCondition 店铺查询条件
+     * @param pageIndex 页码
+     * @param pageSize 每页显示数据条目
+     * @return 查询状态,-1表示查询失败
+     */
+    public ShopExecution getShopList(Shop shopCondition,int pageIndex,int pageSize);
     /**
      * 添加店铺
      * @param shop 店铺对象
